@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:12.9-alpine
+    container_name: demoapp-postgres
+    restart: always
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+    volumes:
+      - ./docker/data/postgresql/database:/var/lib/postgresql/data
+      - ./docker/data/postgresql/home:/root
