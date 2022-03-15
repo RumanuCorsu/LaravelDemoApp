@@ -17,9 +17,11 @@ class VideoResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'url' => $this->url
+            'url' => $this->url,
+            'comments' => CommentResource::collection($this->comments),
         ];
     }
+
     public function withResponse($request, $response)
     {
         $response->header('Charset', 'utf-8');

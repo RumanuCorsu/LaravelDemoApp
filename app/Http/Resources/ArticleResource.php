@@ -14,12 +14,14 @@ class ArticleResource extends JsonResource
      */
     public function toArray($request)
     {
-          return [
+        return [
             'id' => $this->id,
             'name' => $this->name,
-            'article' => $this->article
-          ];
+            'article' => $this->article,
+            'comments' => CommentResource::collection($this->comments),
+        ];
     }
+
     public function withResponse($request, $response)
     {
         $response->header('Charset', 'utf-8');
